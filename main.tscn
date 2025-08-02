@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://d011xay6fdykn"]
+
+[sub_resource type="GDScript" id="GDScript_7dm0k"]
+script/source = "extends Node
+
+@onready var scene_holder = $SceneHolder
+var current_scene: Node
+
+func load_scene(scene: PackedScene):
+	if current_scene:
+		current_scene.queue_free()
+
+	current_scene = scene.instantiate()
+	scene_holder.add_child(current_scene)
+"
+
+[node name="Main" type="Node"]
+script = SubResource("GDScript_7dm0k")

@@ -1,0 +1,156 @@
+[gd_scene load_steps=6 format=3 uid="uid://byfktrna3nw6j"]
+
+[ext_resource type="Script" uid="uid://yp0t2ugenxak" path="res://Scenes/Interface/Settings/settings.gd" id="1_rv2wm"]
+[ext_resource type="Texture2D" uid="uid://we8qant1w61u" path="res://Assets/UI/home_screen.png" id="2_f2c4p"]
+[ext_resource type="Shader" uid="uid://bf32jteh3i27k" path="res://Scenes/Interface/Settings/blur.gdshader" id="2_hiwk4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f2c4p"]
+shader = ExtResource("2_hiwk4")
+shader_parameter/lod = 1.348
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiwk4"]
+bg_color = Color(0.498039, 0.188235, 0.360784, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.203922, 0.0509804, 0.192157, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 2
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_rv2wm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f2c4p")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_f2c4p")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 396.0
+offset_top = 92.0
+offset_right = -396.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hiwk4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = -6.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28.055)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Video"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Nothing here yet."
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28.055)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="Master" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume: 100"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="CanvasLayer/Control/Panel/VBoxContainer/Master"]
+layout_mode = 2
+offset_top = 27.0
+offset_right = 340.0
+offset_bottom = 43.0
+
+[node name="Music" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Music Volume: 100"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Control/Panel/VBoxContainer/Music"]
+layout_mode = 2
+offset_top = 27.0
+offset_right = 340.0
+offset_bottom = 43.0
+
+[node name="SFX" type="Label" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume: 100"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/Control/Panel/VBoxContainer/SFX"]
+layout_mode = 2
+offset_top = 27.0
+offset_right = 340.0
+offset_bottom = 43.0
+
+[node name="Apply" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Apply Settings"
+
+[node name="Restore" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restore Defaults"
+
+[node name="Back" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Return to title"
