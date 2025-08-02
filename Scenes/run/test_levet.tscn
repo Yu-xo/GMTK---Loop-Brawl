@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dics73n2xpvtc"]
+
+[node name="test_levet" type="Node2D"]
+texture_filter = 1

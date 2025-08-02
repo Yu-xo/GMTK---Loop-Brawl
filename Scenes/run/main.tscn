@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://qwdl8xhrhf08"]
+
+[ext_resource type="PackedScene" uid="uid://cyqjk5h1xskvd" path="res://Scenes/player/player.tscn" id="2_oae6f"]
+[ext_resource type="PackedScene" uid="uid://cin5rg52gb4xk" path="res://Scenes/Enemies/Elites/elite_red.tscn" id="3_oae6f"]
+
+[node name="main" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("2_oae6f")]
+position = Vector2(357, 125)
+
+[node name="Elite_red" parent="." instance=ExtResource("3_oae6f")]
