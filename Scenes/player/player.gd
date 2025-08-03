@@ -9,11 +9,12 @@ enum State {
 
 @onready var player: Sprite2D = $player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var health_bar: ProgressBar = $UI/Health/health_bar
+@onready var health_bar: TextureProgressBar = $UI/Health/health_bar
 @onready var timer_label: Label = $UI/Text_labels/Timer
 @onready var death_label: Label = $"UI/Text_labels/Number of deaths"
 @onready var attack_power_label: Label = $"UI/Text_labels/Attak Power"
 @onready var punch: Area2D = $punch
+@onready var punch_collision: CollisionShape2D = $punch/CollisionShape2D
 @onready var slash: Sprite2D = $Slash
 
 @export var speed := 100
@@ -72,6 +73,8 @@ func _attack() -> void:
 		animation_player.play("attack_2")
 
 	attack_index = 1 - attack_index  # toggle between 0 and 1
+
+	print(punch.get_overlapping_bodies())
 
 func movement():
 	dir = Input.get_vector("left", "right", "up", "down")

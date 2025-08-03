@@ -1,6 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyqjk5h1xskvd"]
+[gd_scene load_steps=22 format=3 uid="uid://cyqjk5h1xskvd"]
 
 [ext_resource type="Script" uid="uid://clhpo7cgydwlk" path="res://Scenes/player/player.gd" id="1_mxepk"]
+[ext_resource type="Texture2D" uid="uid://cx3n4tgepiy7v" path="res://Assets/UI/barlbl.png" id="2_6upyo"]
+[ext_resource type="FontFile" uid="uid://bbtbbt1l2fvu" path="res://fonts/PixgamerRegular-OVD6A.ttf" id="2_ca0mu"]
+[ext_resource type="Texture2D" uid="uid://bny6n6rsvm47s" path="res://Assets/UI/timerlbl.png" id="2_e41v5"]
 [ext_resource type="Texture2D" uid="uid://ibrp4w1jvuc5" path="res://Assets/PLyaer/player.png" id="2_eo61r"]
 [ext_resource type="Texture2D" uid="uid://dbqtjkiunbi77" path="res://Assets/PLyaer/player_effect.png" id="3_mxepk"]
 
@@ -181,6 +184,28 @@ vertices = PackedVector2Array(-365, -174.57, -377.859, -294.883, 947.32, -281.09
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-375, -174, -372, 193, 973, 200, 957, -291, -389, -305)])
 
+[sub_resource type="Gradient" id="Gradient_mxepk"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.242311, 2.24109e-07, 3.00817e-08, 0.52549)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e41v5"]
+gradient = SubResource("Gradient_mxepk")
+width = 1
+height = 1
+use_hdr = true
+
+[sub_resource type="Gradient" id="Gradient_ca0mu"]
+colors = PackedColorArray(0.397482, 5.53504e-07, 1.68458e-07, 1, 0.533324, 1.09497e-06, 2.88785e-07, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6upyo"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xxarj"]
+width = 1
+height = 1
+color_ramp = SubResource("Gradient_ca0mu")
+noise = SubResource("FastNoiseLite_6upyo")
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_mxepk")
 
@@ -212,13 +237,18 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="health_bar" type="ProgressBar" parent="UI/Health"]
+[node name="health_bar" type="TextureProgressBar" parent="UI/Health"]
 layout_mode = 0
-offset_left = 61.0
-offset_top = 8.0
-offset_right = 693.0
-offset_bottom = 50.0
-show_percentage = false
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 205.0
+offset_bottom = 45.0
+scale = Vector2(2.02121, 2.02121)
+value = 39.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_e41v5")
+texture_over = ExtResource("2_6upyo")
+texture_progress = SubResource("NoiseTexture2D_xxarj")
 
 [node name="Text_labels" type="Control" parent="UI"]
 layout_mode = 3
@@ -228,11 +258,16 @@ offset_bottom = 40.0
 
 [node name="Timer" type="Label" parent="UI/Text_labels"]
 layout_mode = 0
-offset_left = 1051.0
-offset_top = 17.0
-offset_right = 1091.0
-offset_bottom = 40.0
-text = "l"
+offset_left = 504.0
+offset_top = 21.0
+offset_right = 652.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.574351, 0.461079, 0, 1)
+theme_override_fonts/font = ExtResource("2_ca0mu")
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Number of deaths" type="Label" parent="UI/Text_labels"]
 layout_mode = 0
@@ -249,6 +284,18 @@ offset_top = 59.0
 offset_right = 1092.0
 offset_bottom = 82.0
 text = "l"
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+z_index = -1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 8.0
+offset_right = 119.0
+offset_bottom = 82.0
+grow_horizontal = 2
+texture = ExtResource("2_e41v5")
 
 [node name="player" type="Sprite2D" parent="."]
 texture = ExtResource("2_eo61r")

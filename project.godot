@@ -11,17 +11,19 @@ config_version=5
 [application]
 
 config/name="GMTK-loops"
-run/main_scene="uid://qwdl8xhrhf08"
+run/main_scene="uid://um408afx4h08"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Res/global.gd"
+GameSettings="*res://Scenes/Interface/Settings/game_settings.gd"
 
 [global_group]
 
 player=""
+"ui button"=""
 
 [input]
 
